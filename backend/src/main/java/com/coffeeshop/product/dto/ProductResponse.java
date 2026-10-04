@@ -1,2 +1,13 @@
-package com.coffeeshop.product.dto;public record ProductResponse() {
+package com.coffeeshop.product.dto;
+
+import java.math.BigDecimal;
+
+public record ProductResponse(
+        Long id,
+        String sku,
+        String name,
+        String description,
+        BigDecimal price,
+        boolean active
+) {
 }
