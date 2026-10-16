@@ -1,5 +1,6 @@
 package com.coffeeshop.product.entity;
 
+import com.coffeeshop.category.entity.Category;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,7 +20,10 @@ import java.time.LocalDateTime;
 @Table(
         name = "products",
         uniqueConstraints = {
-                @UniqueConstraint(name = "uk_products_sku", columnNames = "sku")
+                @UniqueConstraint(
+                        name = "uk_products_sku",
+                        columnNames = "sku"
+                )
         }
 )
 public class Product {
@@ -43,6 +47,16 @@ public class Product {
     @Column(nullable = false)
     @Builder.Default
     private boolean active = true;
+
+    // Every Product must reference exactly one Category.
+    // LAZY avoids loading Category when only basic Product fields are needed.
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(
+            name = "category_id",
+            nullable = false,
+            foreignKey = @ForeignKey(name = "fk_products_category")
+    )
+    private Category category;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;

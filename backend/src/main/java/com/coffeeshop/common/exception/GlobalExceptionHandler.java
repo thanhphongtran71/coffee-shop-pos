@@ -25,6 +25,31 @@ public class GlobalExceptionHandler {
         return response(HttpStatus.CONFLICT, ex.getMessage(), req, Map.of());
     }
 
+    @ExceptionHandler(DuplicateCategoryException.class)
+    public ResponseEntity<ApiError> duplicateCategory(
+            DuplicateCategoryException ex,
+            HttpServletRequest req) {
+        return response(
+                HttpStatus.CONFLICT,
+                ex.getMessage(),
+                req,
+                Map.of()
+        );
+    }
+
+    @ExceptionHandler(InactiveCategoryException.class)
+    public ResponseEntity<ApiError> inactiveCategory(
+            InactiveCategoryException ex,
+            HttpServletRequest req
+    ) {
+        return response(
+                HttpStatus.CONFLICT,
+                ex.getMessage(),
+                req,
+                Map.of()
+        );
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ApiError> validation(MethodArgumentNotValidException ex, HttpServletRequest req) {
         Map<String, String> errors = new LinkedHashMap<>();
