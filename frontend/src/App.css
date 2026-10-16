@@ -4,13 +4,16 @@
 .eyebrow { margin: 0 0 8px; font-size: .75rem; font-weight: 700; letter-spacing: .12em; color: var(--accent); }
 .app-header h1 { margin: 0; font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -.03em; }
 .app-subtitle { margin-top: 8px; color: var(--text); }
-.product-management h2 { margin: 0 0 18px; font-size: 1.5rem; }
-.product-management h3 { margin: 0; font-size: 1.1rem; }
+.management-section h2 { margin: 0 0 18px; font-size: 1.5rem; }
+.management-section h3 { margin: 0; font-size: 1.1rem; }
+.section-description { max-width: 760px; margin: -6px 0 18px; color: var(--text); line-height: 1.6; }
 .product-form { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; margin-bottom: 28px; padding: 20px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); }
 .product-form h3, .product-form label:nth-of-type(3), .form-actions { grid-column: 1 / -1; }
 .product-form label { display: grid; gap: 6px; font-size: .9rem; font-weight: 600; }
-.product-form input, .product-form textarea { width: 100%; box-sizing: border-box; border: 1px solid var(--border); border-radius: 7px; padding: 10px 12px; background: var(--bg); color: var(--text-h); font: inherit; }
-.product-form input:focus, .product-form textarea:focus { outline: 2px solid var(--accent-border); outline-offset: 1px; }
+.product-form input, .product-form textarea, .product-form select,
+.search-form input { width: 100%; box-sizing: border-box; border: 1px solid var(--border); border-radius: 7px; padding: 10px 12px; background: var(--bg); color: var(--text-h); font: inherit; }
+.product-form input:focus, .product-form textarea:focus, .product-form select:focus,
+.search-form input:focus { outline: 2px solid var(--accent-border); outline-offset: 1px; }
 .form-actions, .row-actions, .table-heading { display: flex; align-items: center; gap: 8px; }
 .table-heading { justify-content: space-between; margin-bottom: 12px; }
 button { border: 1px solid transparent; border-radius: 7px; padding: 9px 13px; background: var(--accent); color: white; font: inherit; font-size: .9rem; font-weight: 600; cursor: pointer; }
@@ -30,8 +33,16 @@ button.button-secondary { background: transparent; color: var(--text-h); border-
 .status-active { color: #166534; background: #dcfce7; }
 .status-inactive { color: #854d0e; background: #fef3c7; }
 .row-actions { flex-wrap: wrap; }
+.app-nav { display: flex; gap: 8px; margin-top: 20px; }
+button.nav-button { background: transparent; color: var(--text-h); border-color: var(--border); }
+button.nav-button-active { background: var(--accent); color: white; border-color: var(--accent); }
+.search-form { display: flex; align-items: end; gap: 12px; margin-bottom: 24px; }
+.search-form label { display: grid; gap: 6px; flex: 1; max-width: 560px; font-size: .9rem; font-weight: 600; }
+.field-help { color: var(--text); font-weight: 400; line-height: 1.5; }
 @media (max-width: 720px) {
   .product-form { grid-template-columns: 1fr; padding: 14px; }
   .product-form h3, .product-form label:nth-of-type(3), .form-actions { grid-column: auto; }
   .app-shell { width: calc(100% - 20px); padding-top: 18px; }
+  .search-form { align-items: stretch; flex-direction: column; }
+  .search-form label { max-width: none; }
 }
